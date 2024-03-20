@@ -53,3 +53,21 @@ typedef union {
 extern YYSTYPE yylval;
  
 %}
+
+digit [0-9]
+letter [A-Za-z]
+ 
+%%
+ 
+"QUESTION"          { return QUESTION; }
+"ANSWER"            { return ANSWER; }
+"FEEDBACK"          { return FEEDBACK; }
+"IF"                { return IF; }
+"ELSE"              { return ELSE; }
+"ENDIF"             { return ENDIF; }
+"WHILE"             { return WHILE; }
+"ENDWHILE"          { return ENDWHILE; }
+"true"              { return TRUE; }
+"false"             { return FALSE; }
+"&&"                { return AND; }
+"||"                { return OR; }
