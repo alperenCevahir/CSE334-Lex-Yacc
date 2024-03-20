@@ -23,15 +23,35 @@ QuizLang provides a versatile and intuitive solution for creating quizzes and qu
  
 <statement_list> ::= | <statement_list> <statement>
  
-<statement> ::= <question_statement> | <answer_statement> | <feedback_statement>
+<statement> ::= <question_statement> | <answer_statement> | <feedback_statement> | <control_flow_statement>
  
-<question_statement> ::= QUESTION STRING ':' <answer_options>
+<question_statement> ::= "QUESTION" STRING ":" <answer_options>
  
-<answer_statement> ::= ANSWER STRING
+<answer_statement> ::= "ANSWER" STRING
  
-<feedback_statement> ::= FEEDBACK STRING
+<feedback_statement> ::= "FEEDBACK" STRING
  
-<answer_options> ::= <option> | <option> ',' <answer_options>
+<control_flow_statement> ::= <if_statement> | <while_statement>
+ 
+<if_statement> ::= "IF" <condition> ":" <statement_list> <else_clause> "ENDIF"
+ 
+<else_clause> ::= "ELSE" ":" <statement_list> | ε
+ 
+<while_statement> ::= "WHILE" <condition> ":" <statement_list> "ENDWHILE"
+ 
+<condition> ::= <logic_expression>
+ 
+<answer_options> ::= <option> | <option> "," <answer_options>
  
 <option> ::= STRING
+ 
+<logic_expression> ::= <term> | <term> <logical_operator> <term>
+ 
+<term> ::= <factor> | <factor> <relational_operator> <factor>
+ 
+<factor> ::= STRING | NUMBER | BOOLEAN
+ 
+<logical_operator> ::= "&&" | "||"
+ 
+<relational_operator> ::= "==" | "!=" | ">" | "<" | ">=" | "<="
 
