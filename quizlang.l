@@ -71,3 +71,41 @@ letter [A-Za-z]
 "false"             { return FALSE; }
 "&&"                { return AND; }
 "||"                { return OR; }
+"="                 { return EQUAL_OP; }
+"+"                 { return SUM_OP; }
+"-"                 { return SUB_OP; }
+"*"                 { return MULT_OP; }
+"/"                 { return DIV_OP; }
+"!="                { return NOTEQUAL_COMPARATOR; }
+"=="                { return EQUAL_COMPARATOR; }
+">"                 { return GREATERTHAN_COMPARATOR; }
+"<"                 { return LESSTHAN_COMPARATOR; }
+">="                { return GREATEREQUAL_COMPARATOR; }
+"<="                { return LESSEQUAL_COMPARATOR; }
+"("                 { return LEFT_PAR; }
+")"                 { return RIGHT_PAR; }
+","                 { return COMMA; }
+"."                 { return DOT; }
+":"                 { return COLON; }
+";"                 { return SEMICOLON; }
+"print"             { return PRINT; }
+"array"             { return ARRAY; }
+"func"              { return FUNC; }
+"endfunc"           { return ENDFUNC; }
+"call"              { return CALLFUNC; }
+"return"            { return RETURN; }
+\/\/.*              { return COMMENT_LINE; }
+\".*\"              { yylval.id[0] = strdup(yytext); return STRING; }
+{digit}+            { yylval.num = atoi(yytext); return NUMBER; }
+{digit}+\.{digit}+ { yylval.num = atof(yytext); return NUMBER; }
+{letter}+({letter}*|{digit}*)  { strcpy(yylval.id, yytext); return FUNCTION_NAME; }
+ 
+%%
+ 
+int yywrap() {
+    return 1;
+}
+ 
+void yyerror(char *s) {
+    fprintf(stderr, "%s on line %d\n", s, yylineno);
+}
