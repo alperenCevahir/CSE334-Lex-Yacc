@@ -18,3 +18,20 @@ To use QuizLang, compile code with the make command and execute it with a comman
 QuizLang provides a versatile and intuitive solution for creating quizzes and questionnaires, offering a balance between simplicity and functionality to suit various needs.
 
 
+### BNF GRAMMER OF QUIZLANG ###
+<quizlang_program> ::= <statement_list>
+ 
+<statement_list> ::= | <statement_list> <statement>
+ 
+<statement> ::= <question_statement> | <answer_statement> | <feedback_statement>
+ 
+<question_statement> ::= QUESTION STRING ':' <answer_options>
+ 
+<answer_statement> ::= ANSWER STRING
+ 
+<feedback_statement> ::= FEEDBACK STRING
+ 
+<answer_options> ::= <option> | <option> ',' <answer_options>
+ 
+<option> ::= STRING
+
