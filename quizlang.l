@@ -95,6 +95,7 @@ letter [A-Za-z]
 "call"              { return CALLFUNC; }
 "return"            { return RETURN; }
 \/\/.*              { return COMMENT_LINE; }
+\".*\"              { yylval.id[0] = '\0'; strcpy(yylval.id, yytext + 1); return STRING; }
 \".*\"              { yylval.id[0] = strdup(yytext); return STRING; }
 {digit}+ { yylval.num = (int) strtol(yytext, NULL, 10); return NUMBER; }
 {digit}+\.{digit}+ { yylval.num = atof(yytext); return NUMBER; }
