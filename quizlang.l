@@ -96,7 +96,7 @@ letter [A-Za-z]
 "return"            { return RETURN; }
 \/\/.*              { return COMMENT_LINE; }
 \".*\"              { yylval.id[0] = strdup(yytext); return STRING; }
-{digit}+            { yylval.num = strtol(yytext, NULL, 10); return NUMBER; }
+{digit}+ { yylval.num = strtol(yytext, NULL, 10); return NUMBER; }
 {digit}+\.{digit}+ { yylval.num = atof(yytext); return NUMBER; }
 {letter}+({letter}*|{digit}*)  { strcpy(yylval.id, yytext); return FUNCTION_NAME; }
  
