@@ -1,0 +1,15 @@
+QUESTION "What is the capital of France?": "Paris", "London", "Berlin";
+ANSWER "Paris";
+FEEDBACK "Correct! Paris is the capital of France.";
+IF:
+    QUESTION "What is the largest ocean?": "Atlantic Ocean", "Indian Ocean", "Pacific Ocean";
+    ANSWER "Pacific Ocean";
+    FEEDBACK "Correct! The Pacific Ocean is the largest ocean.";
+ELSE:
+    FEEDBACK "No questions answered.";
+ENDIF
+WHILE:
+    QUESTION "What is 2 + 2?": "3", "4", "5";
+    ANSWER "4";
+    FEEDBACK "Correct!";
+ENDWHILE.
